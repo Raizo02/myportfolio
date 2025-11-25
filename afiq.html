@@ -25,6 +25,96 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        /* Layered glow + bolder grid for the hero background */
+        #home {
+            background:
+                radial-gradient(circle at 12% 18%, rgba(52, 211, 153, 0.28), transparent 38%),
+                radial-gradient(circle at 88% 12%, rgba(79, 70, 229, 0.34), transparent 32%),
+                radial-gradient(circle at 35% 75%, rgba(52, 211, 153, 0.22), transparent 38%),
+                linear-gradient(135deg, #0a0f21 0%, #0e1a36 40%, #0a0d18 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from 120deg, rgba(79, 70, 229, 0.32), rgba(52, 211, 153, 0.2), rgba(79, 70, 229, 0.32));
+            filter: blur(120px);
+            opacity: 0.9;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+
+        #home::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.7;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 70%);
+        }
+
+        /* Projects section: smooth gradient with faint grid and glow */
+        #projects {
+            background:
+                radial-gradient(circle at 12% 28%, rgba(52, 211, 153, 0.22), transparent 36%),
+                radial-gradient(circle at 82% 18%, rgba(79, 70, 229, 0.28), transparent 34%),
+                linear-gradient(150deg, #0b111f 0%, #0f1b33 45%, #0a0c16 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #projects::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 120px 120px;
+            opacity: 0.55;
+            pointer-events: none;
+            mask-image: radial-gradient(circle at 50% 50%, black 32%, transparent 70%);
+        }
+
+        #projects::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 65% 35%, rgba(79, 70, 229, 0.35), transparent 42%),
+                radial-gradient(circle at 28% 70%, rgba(52, 211, 153, 0.24), transparent 45%);
+            filter: blur(90px);
+            opacity: 0.8;
+            transform: scale(1.02);
+            pointer-events: none;
+        }
+
+        /* About section: soft spotlight */
+        #about {
+            background:
+                radial-gradient(circle at 35% 30%, rgba(79, 70, 229, 0.22), transparent 40%),
+                radial-gradient(circle at 70% 65%, rgba(52, 211, 153, 0.18), transparent 45%),
+                linear-gradient(160deg, #0d1328 0%, #0b0f1f 55%, #0a0d17 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Contact section: horizon glow */
+        #contact {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.28), transparent 40%),
+                linear-gradient(180deg, #0a0f1c 0%, #0d1426 50%, #0a0c14 100%);
+            position: relative;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -94,11 +184,11 @@
     <!-- Header / Navigation -->
     <header class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold text-accent hover:text-white transition duration-300">
+            <a href="#home" class="text-2xl font-bold text-accent hover:text-white transition duration-300">
                 AFIQ ZAIDI
             </a>
             <nav class="hidden md:flex space-x-8">
-                <a href="#hero" class="text-gray-300 hover:text-accent transition duration-300">Home</a>
+                <a href="#home" class="text-gray-300 hover:text-accent transition duration-300">Home</a>
                 <a href="#projects" class="text-gray-300 hover:text-accent transition duration-300">Projects</a>
                 <a href="#about" class="text-gray-300 hover:text-accent transition duration-300">About</a>
                 <a href="#contact" class="text-gray-300 hover:text-accent transition duration-300">Contact</a>
@@ -116,7 +206,7 @@
         <!-- Mobile Menu (Hidden by default) -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800 pb-4">
             <nav class="flex flex-col space-y-2 px-4">
-                <a href="#hero"
+                <a href="#home"
                     class="block py-2 text-gray-300 hover:text-accent hover:bg-gray-700 rounded-md transition duration-300">Home</a>
                 <a href="#projects"
                     class="block py-2 text-gray-300 hover:text-accent hover:bg-gray-700 rounded-md transition duration-300">Projects</a>
@@ -129,9 +219,9 @@
     </header>
 
     <main>
-        <!-- 1. Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-gray-900 pt-20">
-            <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- 1. Home Section -->
+        <section id="home" class="relative isolate min-h-screen flex items-center justify-center text-center pt-20">
+            <div class="relative z-10 max-w-4xl mx-auto px-6 py-12">
                 <p class="text-xl font-medium text-accent mb-4">Hello, I'm a Developer</p>
                 <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight text-white mb-6">
                     Building <span class="text-primary">responsive</span> and <span class="text-primary">scalable</span>
@@ -155,23 +245,23 @@
         </section>
 
         <!-- 2. Projects Section -->
-        <section id="projects" class="py-20 bg-gray-800">
+        <section id="projects" class="relative isolate py-20">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center text-white mb-4">My Projects</h2>
                 <p class="text-xl text-center text-gray-400 mb-16">A showcase of recent technical challenges and
                     solutions.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 justify-items-center">
 
                     <!-- Project Card 1 -->
                     <div
-                        class="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-accent transition duration-500 transform hover:scale-[1.02]">
+                        class="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-accent transition duration-500 transform hover:scale-[1.02] max-w-sm w-full">
                         <img src="https://placehold.co/600x400/1F2937/FFFFFF?text=Kalkulator+Gaji"
                             alt="Project 1 Mockup" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-white mb-3">Salary Dashboard</h3>
+                            <h3 class="text-2xl font-semibold text-white mb-3">Money Dashboard</h3>
                             <p class="text-gray-400 mb-4">
-                                A salary managemant system built with HTML, handling large datasets in
+                                A money managemant system built with HTML, handling large datasets in
                                 real-time.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
@@ -180,7 +270,7 @@
                             </div>
                             <a href="https://raizo02.github.io/gaji/kalkulator2.html" target="_blank"
                                 class="text-accent hover:text-white font-medium inline-flex items-center group">
-                                View Case Study
+                                View project
                                 <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition duration-200" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -192,25 +282,22 @@
 
                     <!-- Project Card 2 -->
                     <div
-                        class="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-accent transition duration-500 transform hover:scale-[1.02]">
-                        <img src="https://placehold.co/600x400/1F2937/FFFFFF?text=Project+2+Mockup"
-                            alt="Project 2 Mockup" class="w-full h-48 object-cover">
+                        class="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-accent transition duration-500 transform hover:scale-[1.02] max-w-sm w-full">
+                        <img src="https://placehold.co/600x400/1F2937/FFFFFF?text=Kalkulator+Gaji"
+                            alt="Project 1 Mockup" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-white mb-3">E-commerce Backend API</h3>
+                            <h3 class="text-2xl font-semibold text-white mb-3">Money Dashboard</h3>
                             <p class="text-gray-400 mb-4">
-                                Designed and deployed a robust, highly-available REST API using Python/Django and
-                                PostgreSQL.
+                                A money managemant system built with HTML, handling large datasets in
+                                real-time.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span
-                                    class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">Python</span>
-                                <span
-                                    class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">Django</span>
-                                <span class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">AWS
-                                    S3</span>
+                                    class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">HTML</span>
                             </div>
-                            <a href="#" class="text-accent hover:text-white font-medium inline-flex items-center group">
-                                View Case Study
+                            <a href="https://raizo02.github.io/gaji/kalkulator2.html" target="_blank"
+                                class="text-accent hover:text-white font-medium inline-flex items-center group">
+                                View project
                                 <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition duration-200" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -220,42 +307,12 @@
                         </div>
                     </div>
 
-                    <!-- Project Card 3 -->
-                    <div
-                        class="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-accent transition duration-500 transform hover:scale-[1.02]">
-                        <img src="https://placehold.co/600x400/1F2937/FFFFFF?text=Project+3+Mockup"
-                            alt="Project 3 Mockup" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold text-white mb-3">Mobile Expense Tracker</h3>
-                            <p class="text-gray-400 mb-4">
-                                A cross-platform mobile application developed with React Native for personal finance
-                                tracking.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">React
-                                    Native</span>
-                                <span
-                                    class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">Expo</span>
-                                <span
-                                    class="text-xs font-medium bg-primary/20 text-primary px-3 py-1 rounded-full">GraphQL</span>
-                            </div>
-                            <a href="#" class="text-accent hover:text-white font-medium inline-flex items-center group">
-                                View Case Study
-                                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition duration-200" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 3. About Section -->
-        <section id="about" class="py-20 bg-gray-900">
+        <section id="about" class="relative isolate py-20">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center text-white mb-16">About Me</h2>
 
@@ -291,7 +348,7 @@
         </section>
 
         <!-- 4. Contact Section -->
-        <section id="contact" class="py-20 bg-gray-800">
+        <section id="contact" class="relative isolate py-20">
             <div class="max-w-xl mx-auto px-6 lg:px-8 text-center">
                 <h2 class="text-4xl font-bold text-white mb-4">Get In Touch</h2>
                 <p class="text-xl text-gray-400 mb-8">
